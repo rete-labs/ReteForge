@@ -4,11 +4,23 @@ Where networks are forged and tested
 
 ## About
 
-The main goal of the project: implement automated deploy and execution environment of distributed applications for development, testing, benchmarking and demo purposes. With main focus on new "network stacks" as we're developing one in ReteLabs.
+_Rete means Network in Latin._
 
-Note: we're not developing a scientific instrument but engineering one, so we focus on practical aspects instead of purity of experiments and theoretical analysis.
+ReteForge implements automated deploy and execution environment of distributed applications for development, testing, benchmarking and demo purposes. With main focus on new network technology as we're developing one in ReteLabs.
 
-Rete means Network in Latin.
+ReteForge isn't network simulator nor emulator but rather multi-purpose environment to support developing of new networks.
+
+## Target audience
+
+The project is mainly intended for developers of new networks who focus on prototyping and eventual production-ready implementations.
+
+It also may be of interest to researchers in networking and distributed systems, but its usefulness may be limited there as we're not developing a scientific instrument but engineering one, so we focus on practical aspects instead of purity of experiments and theoretical analysis.
+
+There are a lot of network simulators (NS-3, OmniNet++ to name some) that seem more suitable for researchers. On the other hand, we don't know any public software with goals similar to ReteForge, that's why we started this project.
+
+## Project status
+
+ReteForge is in planning and early development phase.
 
 ## Use cases
 
@@ -45,7 +57,7 @@ So, in this scenario we want following:
    - Connection quality between Alice and Bob - as reported by the network and by themselves
    - Packet dumps for detailed analysis
 5. Visualization
-   - Hosts and layers of links between them (3D diagram is the best, with possibility to select which layers to show)
+   - Hosts and layers of links between them (3D diagram is the best, with possibility to select which layers to show; we can start with 2D though)
    - Graphs of the metrics (with ability to select which to show)
    - Visualization of the connection between Alice and Bob (can be video stream that is demonstrated)
 
@@ -82,3 +94,31 @@ Let's break down what we want from ReteForge for benchmarking:
    - Automated anomaly detection
 
 Currently we perform "benchmarking without feedback", this means Alice and Bob do not communicate aside of simple reflection of packets in some benches. Advanced benchmarking may require collaboration between Alice and Bob - and instead of duing this in-band (i.e. within benched link), we should implement it out-of-band, via means provided by ReteForge's environment. This is advanced topic to explore later.
+
+### 3. Deploying of public testnet
+
+We need to host public nodes of our network to facilitate forming of the open source community. Ideally, an enthusiast should be able to build our network platform (or even install prebuilt image, e.g. a container or mobile app) and connect to the public network to see how it works. In more advanced scenario, he should be able to form a local network and connect it to the public network.
+
+What can be demonstrated:
+- Hosting of Web services (like websites) in the network
+- Public network as a federation of user's networks
+- VPN-like scenarios: automatic connectivity of user's network parts over public network
+- Mobility scenarios: e.g. device moves from one Wifi network to another, changing its IP address, but connectivity to some service isn't interrupted
+- Multihoming scenarios: e.g. device is connected to network by few links, and all of them are utilized by single connection
+
+Demo scenarios should be worked upon, but overall the need for public testnet seems to be very well justified already.
+
+So, in this scenario we want following:
+1. Automated deployment
+   - Hosts are created by ReteForge (emulated as containers or VMs) or adopted (VPS, physical hosts)
+   - Cross-datacenter, maybe even cross-provider deployment (so we have network agents in different envirnoments)
+   - Network software is deployed to these hosts and properly configured
+   - Scaling: ability to add or remove hosts from operating environment, including automated one (e.g. in a pre-configured range)
+2. Monitoring
+   - The health of the public network infrastructure is monitored, alerting admins in case of outages or other incidents
+3. Security
+   - While testnet shouldn't be used for production, it is still our infrastucture that must be kept secure. Need to ensure it isn't abused nor used to abuse other systems in the Internet
+   - Access to public testnet should be controlled (e.g. by user accounts), routed traffic - counted, abuse prohibited
+   - Publishing of questionable content (broad topics like porn, violence etc) in public testnet should be prohibited (and offenders banned), with a proper way to report such content to our moderators
+
+Obviously, implementing public testnet requires special features not only from ReteForge, but from network software itself, and around it. ReteForge should serve as the foundation for deploying and managing it.
