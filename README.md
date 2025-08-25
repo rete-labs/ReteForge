@@ -23,9 +23,11 @@ Examples of system-level software:
 - Dave made new leaderless distributed database. He needs to benchmark it under network splits and joins.
 - Eve works on a new service mesh project. She uses ReteForge to test how the mesh balances loads when some links fail.
 
-ReteForge also may be of interest to researchers in networking and distributed systems, but its usefulness may be limited there as we're not developing a scientific instrument but engineering one, so we focus on practical aspects instead of purity of experiments and theoretical analysis.
+ReteForge also may be of interest to researchers in networking and distributed systems, but its usefulness may be limited there as we're not developing a scientific instrument but engineering one, so we focus on practical aspects instead of purity of experiments and theoretical analysis. There are a lot of network simulators (NS-3, OmniNet++ to name some) that seem more suitable for researchers.
 
-There are a lot of network simulators (NS-3, OmniNet++ to name some) that seem more suitable for researchers. On the other hand, we don't know any public software with goals similar to ReteForge, that's why we started this project.
+ReteForge may be somewhat useful to network administrators and network hardware engineers, but they'd rather stick to GNS3. Currently we don't have a goal to emulate real hardware nor network infrastructure deployments. This may change in the future, but our targeted hardware is far beyond wired devices - and properly emulating mobile wireless devices is much harder.
+
+Overall, we don't know any public software with goals similar to ReteForge, that's why we started this project.
 
 ## Project status
 
